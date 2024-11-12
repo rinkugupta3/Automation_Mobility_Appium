@@ -1,0 +1,8 @@
+{
+  "appium:appPackage": "com.code2lead.kwad",
+  "appium:appActivity": "com.code2lead.kwad.MainActivity",
+  "platformName": "Android",
+  "appium:deviceName": "Pixel 3a API 34",
+  "appium:udid": "emulator-5554",
+  "appium:automationName": "UiAutomator2"
+}

@@ -1,0 +1,51 @@
+Prerequisites:
+macOS Machine: You'll need a macOS system as Xcode is required for iOS testing.
+Xcode: Ensure Xcode is installed and set up on your macOS.
+Appium Server: Appium server must be installed (you can install it via Node.js).
+Appium Inspector: Optionally, use Appium Inspector to inspect UI elements.
+Homebrew: For installing tools such as libimobiledevice for device communication.
+Install Node.js via the Homebrew package manager
+iOS Device: Real iPhone X connected via USB.
+Apple Developer Account: Ensure you have an Apple Developer Account to create and sign the WebDriverAgent.
+Python: Python 3.x installed with pip for dependency management.
+Appium-Python Client: Install the Appium Python client.
+
+Step-by-Step Guide:
+1. Install Appium and Required Dependencies:
+Install Node.js (if not installed):
+brew install node
+Install Appium:
+npm install -g appium
+Install Appium-Python Client:
+pip install Appium-Python-Client
+
+2. Configure WebDriverAgent for iOS:
+WebDriverAgent: WebDriverAgent is used by Appium to communicate with iOS devices.
+Open Xcode and clone WebDriverAgent:
+git clone https://github.com/appium/WebDriverAgent.git
+cd WebDriverAgent
+Set Up Signing:
+
+Open WebDriverAgent.xcodeproj in Xcode.
+Go to Signing & Capabilities and set your team for signing.
+Ensure WebDriverAgentLib and WebDriverAgentRunner targets are signed with your developer account.
+Build WebDriverAgent: Run the following command to build and install the WebDriverAgent on the device:
+xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'id=YOUR_DEVICE_UDID' test
+
+3. Connect Your iPhone X:
+Device Connection:
+
+Connect your iPhone X to your macOS via USB.
+Ensure that the device is trusted and appears in Xcode’s Devices and Simulators window.
+Enable Developer Mode:
+Go to Settings > Privacy & Security > Developer Mode and enable it.
+
+4. Start the Appium Server:
+Open a terminal and start Appium:
+appium
+Optionally, you can start Appium with specific logs:
+appium --log-level info
+
+5. Run the Python Test Script:
+
+pytest test_ios.py
